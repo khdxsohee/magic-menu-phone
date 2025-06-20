@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magic Menu</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1f0036, #000000);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .menu {
+      position: relative;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px 40px;
+      border-radius: 20px;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+      display: flex;
+      gap: 30px;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .menu a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.2em;
+      padding: 10px 20px;
+      border-radius: 10px;
+      transition: 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .menu a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, #00fff0, #8a2be2);
+      transition: 0.4s;
+      z-index: -1;
+    }
+
+    .menu a:hover::before {
+      left: 0;
+    }
+
+    .menu a:hover {
+      color: #000;
+      font-weight: bold;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* Responsive toggle button */
+    .toggle {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      display: none;
+      cursor: pointer;
+      z-index: 100;
+    }
+
+    .bar {
+      width: 30px;
+      height: 3px;
+      background: #fff;
+      margin: 6px 0;
+    }
+
+    @media (max-width: 600px) {
+      .menu {
+        flex-direction: column;
+        gap: 15px;
+        padding: 30px;
+        display: none;
+      }
+
+      .menu.active {
+        display: flex;
+      }
+
+      .toggle {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="toggle" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <nav class="menu" id="magicMenu">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Magic</a>
+    <a href="#">Gallery</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("magicMenu").classList.toggle("active");
+    }
+  </script>
+
+</body>
+</html>
